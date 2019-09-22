@@ -1,0 +1,26 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "Learning sites for scss",
+  "main": "index.js",
+  "scripts": {
+    "compile:natours-style": "node-sass Natours/scss/main.scss Natours/css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okeefem2/advanced-css-course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/okeefem2/advanced-css-course/issues"
+  },
+  "homepage": "https://github.com/okeefem2/advanced-css-course#readme",
+  "devDependencies": {
+    "node-sass": "^4.12.0"
+  },
+  "dependencies": {
+    "g": "^2.0.1",
+    "live-server": "^1.2.1"
+  }
+}

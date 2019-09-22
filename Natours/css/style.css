@@ -1,0 +1,347 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    opacity: 0.8;
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    opacity: 0.8;
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInButtonBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+/* Universal selector to reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  /*
+        Sets the root font size, it is better to not use px because 
+        that overrides any font size set by the user 
+        This sets what 1rem is
+    */
+  font-size: 62.5%; }
+
+body {
+  /* padding and border are not added to total height for an element */
+  box-sizing: border-box; }
+
+/* Set font properties for body since this is the parent of all elements, and font is inherited */
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  padding: 0 2rem 2rem 2rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* this prop helps with shakey animations */
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+  /* block elements take up the full width available and create line breaks after and before */ }
+  .heading-primary span {
+    display: block; }
+  .heading-primary--main {
+    font-size: 6rem;
+    letter-spacing: 3.5rem;
+    font-weight: 400;
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    /*
+        animation-delay: 1s;
+        animation-iteration-count: 3;
+        */ }
+  .heading-primary--sub {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation-name: moveInRight;
+    animation-duration: 3s;
+    animation-timing-function: ease-out; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all .2s;
+  letter-spacing: 2px; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center; }
+
+.u-mg-btm-large {
+  margin-bottom: 8rem; }
+
+.u-mg-btm-medium {
+  margin-bottom: 4rem; }
+
+.u-mg-btm-small {
+  margin-bottom: 1.5rem; }
+
+.btn {
+  /* 
+    pseudo classes are used to style under special condition 
+    link is for when the element is an anchor
+    visited is when the user has visited that link before
+    */
+  /* 
+        pseudo elements are basically treated like children 
+        so width/height 100% are relative to the element itself
+    */ }
+  .btn:link, .btn:visited {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    /* treated as if it where text */
+    display: inline-block;
+    border-radius: 10rem;
+    /* initial state, define that there can be a transition on all properties and the time */
+    transition: all .2s;
+    position: relative; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    /* offset x offset y blur and color, higher blur makes it look higher off the page */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.15); }
+  .btn::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    /* Pos will be absolute to the first relative pos it finds above it */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s; }
+  .btn--white {
+    background-color: #fff;
+    color: #777;
+    padding: 1.5rem 4rem; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn--animated {
+    animation: moveInButtonBottom 1s ease-out 1s;
+    animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  font-size: 1.6rem;
+  transition: all .2s; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #f7f7f7;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+  transform: translateY(0); }
+
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    transition: all 0.2s;
+    outline-offset: 1rem; }
+    .composition__photo--p1 {
+      left: 0;
+      top: -2rem; }
+    .composition__photo--p2 {
+      right: 0;
+      top: 2rem; }
+    .composition__photo--p3 {
+      right: 20%;
+      top: 10rem; }
+    .composition__photo:hover {
+      outline: 1rem solid #55c57a;
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      z-index: 11; }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.95); }
+
+.header {
+  position: relative;
+  /* ^ Setting this to relative makes it so that absolute children use this as an origin/reference */
+  height: 95vh;
+  /* ^ height should always be 95% of the viewport */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  /* ^ the gradient will be on top here when set first, and moves along the gradient to the right bottom */
+  background-size: cover;
+  /* ^ fit to the viewport width */
+  background-position: top;
+  /* ^ whatever the viewport size is, the top of the image stays up at the top, where the rest might start to scale/crop */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* need the four corners of where the image should be visible */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__logo:hover {
+    cursor: pointer;
+    opacity: 0.8; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* set the top and left to 40/50% of parent (because of absolute position) then shift to the left and up 50% width/height of the element */
+    /* This will align the button center in this element because it is an inline-block */
+    text-align: center; }
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s; }
+  .feature-box__icon::before {
+    font-size: 6rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+    background: linear-gradient(to right, #7ed56f, #28b485);
+    -webkit-background-clip: text;
+    color: transparent; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 50rem; }
+  .card__side {
+    transition: all 1s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50rem;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+    .card__side--front {
+      background-color: #fff; }
+    .card__side--back {
+      transform: rotateY(180deg); }
+      .card__side--back-primary {
+        background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+      .card__side--back-secondary {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+      .card__side--back-tertiary {
+        background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
+  .card:hover .card__side--front {
+    transform: rotateY(-180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0); }
+  .card__image {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen; }
+    .card__image--1 {
+      background-image: url("../img/nat-5.jpg"), linear-gradient(to right bottom, #7ed56f, #28b485); }
+    .card__image--2 {
+      background-image: url("../img/nat-5.jpg"), linear-gradient(to right bottom, #ffb900, #ff7730); }
+    .card__image--3 {
+      background-image: url("../img/nat-5.jpg"), linear-gradient(to right bottom, #2998ff, #5643fa); }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: '';
+    display: table;
+    clear: both; }
+  .row [class^='col-'] {
+    float: left; }
+    .row [class^='col-']:not(:last-child) {
+      margin-right: 8rem; }
+  .row .col-1-2 {
+    width: calc((100% - 8rem) / 2); }
+  .row .col-1-3 {
+    width: calc((100% - 2 * 8rem) / 3); }
+  .row .col-1-4 {
+    width: calc((100% - 3 * 8rem) / 4); }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh; }
+
+.section-features {
+  margin-top: -10rem;
+  padding: 20rem 0;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/nat-4.jpg");
+  background-size: cover;
+  transform: skewY(-7deg); }
+  .section-features > * {
+    transform: skewY(7deg); }
+
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 25rem 0 50rem 0;
+  margin-top: -10rem; }

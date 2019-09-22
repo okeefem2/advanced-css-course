@@ -1,0 +1,22 @@
+/* Universal selector to reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    /*
+        Sets the root font size, it is better to not use px because 
+        that overrides any font size set by the user 
+        This sets what 1rem is
+    */
+    font-size: 62.5%;
+}
+
+body {
+    /* padding and border are not added to total height for an element */
+    box-sizing: border-box;
+}

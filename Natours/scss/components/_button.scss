@@ -1,0 +1,95 @@
+@import '../abstracts/variables';
+
+.btn {
+    /* 
+    pseudo classes are used to style under special condition 
+    link is for when the element is an anchor
+    visited is when the user has visited that link before
+    */
+    &:link,
+    &:visited {
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        /* treated as if it where text */
+        display: inline-block;
+        border-radius: 10rem;
+        /* initial state, define that there can be a transition on all properties and the time */
+        transition: all .2s;
+        position: relative;
+    }
+
+    &:hover {
+        transform: translateY(-0.3rem);
+        /* offset x offset y blur and color, higher blur makes it look higher off the page */
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        transform: translateY(-0.1rem);
+        box-shadow: 0 1rem 1rem rgba($color-black, 0.15);
+    }
+
+    /* 
+        pseudo elements are basically treated like children 
+        so width/height 100% are relative to the element itself
+    */
+    &::after {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        /* Pos will be absolute to the first relative pos it finds above it */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all 0.4s;
+    }
+
+    &--white {
+        background-color: $color-background-light;
+        color: $color-text-dark;
+        padding: 1.5rem 4rem;
+
+        &::after {
+            background-color: $color-background-light;
+        }
+    }
+
+    &--animated {
+        animation: moveInButtonBottom 1s ease-out 1s;
+        animation-fill-mode: backwards;
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        font-size: $default-font-size;
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-grey-light-1;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.5);
+        transform: translateY(0);
+    }
+}

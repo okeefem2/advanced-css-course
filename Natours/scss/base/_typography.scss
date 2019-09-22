@@ -1,0 +1,75 @@
+@import '../abstracts/variables';
+
+/* Set font properties for body since this is the parent of all elements, and font is inherited */
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: $color-text-dark;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.heading-primary {
+    color: $color-background-light;
+    text-transform: uppercase;
+    /* this prop helps with shakey animations */
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+
+    span {
+        display: block;
+    }
+    /* block elements take up the full width available and create line breaks after and before */
+    &--main {
+        font-size: 6rem;
+        letter-spacing: 3.5rem;
+        font-weight: 400;
+        animation-name: moveInLeft;
+        animation-duration: 3s;
+        animation-timing-function: ease-out;
+        /*
+        animation-delay: 1s;
+        animation-iteration-count: 3;
+        */
+    } 
+    
+    &--sub {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+        animation-name: moveInRight;
+        animation-duration: 3s;
+        animation-timing-function: ease-out;
+    }
+}
+
+.heading-secondary {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    background: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: all .2s;
+    letter-spacing: 2px;
+
+    &:hover {
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+        text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+    }
+}
+
+.heading-tertiary {
+    font-size: $default-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.paragraph {
+    font-size: $default-font-size;
+    
+    &:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+}

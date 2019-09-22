@@ -1,0 +1,73 @@
+@import '../abstracts/variables';
+
+.card {
+
+    perspective: 150rem;
+    -moz-perspective: 150rem; // Needed for mozzila
+    position: relative;
+    height: 50rem;
+
+    &__side {
+        transition: all 1s ease;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50rem;
+        backface-visibility: hidden;
+        border-radius: 3px;
+        overflow: hidden;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+        &--front {
+            background-color: $color-background-light;
+        }
+
+        &--back {
+            transform: rotateY(180deg);
+            &-primary{
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+
+            &-secondary {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+
+            &-tertiary {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+        }
+
+
+    }
+
+    &:hover &__side--front {
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0);
+    }
+
+    &__image {
+        background-size: cover;
+        height: 23rem;
+        background-blend-mode: screen;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 100% 0);
+
+        &--1 {
+            // Images from unsplash.com
+            // Path relative from css output
+            background-image: url('../img/nat-5.jpg'), linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+        }
+
+        &--2 {
+            background-image: url('../img/nat-5.jpg'), linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+        }
+
+        &--3 {
+            background-image: url('../img/nat-5.jpg'), linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+        }
+    }
+}
