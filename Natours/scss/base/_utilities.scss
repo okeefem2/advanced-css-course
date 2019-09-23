@@ -1,15 +1,23 @@
 .u-center-text {
-    text-align: center;
+    text-align: center !important;
 }
 
 .u-mg-btm-large {
-    margin-bottom: 8rem;
+    margin-bottom: 8rem !important;
 }
 
 .u-mg-btm-medium {
-    margin-bottom: 4rem;
+    margin-bottom: 4rem !important;
 }
 
 .u-mg-btm-small {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem !important;
+}
+
+.u-mg-top-large {
+    margin-top: 8rem !important;
+}
+
+.u-mg-top-x-large {
+    margin-top: 10rem !important;
 }

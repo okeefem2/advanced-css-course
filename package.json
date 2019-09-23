@@ -18,9 +18,5 @@
   "homepage": "https://github.com/okeefem2/advanced-css-course#readme",
   "devDependencies": {
     "node-sass": "^4.12.0"
-  },
-  "dependencies": {
-    "g": "^2.0.1",
-    "live-server": "^1.2.1"
   }
 }

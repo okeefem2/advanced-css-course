@@ -1,11 +1,12 @@
 @import '../abstracts/variables';
 
 .btn {
-    /* 
-    pseudo classes are used to style under special condition 
+    /*
+    pseudo classes are used to style under special condition
     link is for when the element is an anchor
     visited is when the user has visited that link before
     */
+    &,
     &:link,
     &:visited {
         font-size: 1.6rem;
@@ -17,6 +18,8 @@
         /* initial state, define that there can be a transition on all properties and the time */
         transition: all .2s;
         position: relative;
+        border: none;
+        cursor: pointer;
     }
 
     &:hover {
@@ -30,13 +33,14 @@
         }
     }
 
-    &:active {
+    &:active, &:focus {
+        outline: none;
         transform: translateY(-0.1rem);
         box-shadow: 0 1rem 1rem rgba($color-black, 0.15);
     }
 
-    /* 
-        pseudo elements are basically treated like children 
+    /*
+        pseudo elements are basically treated like children
         so width/height 100% are relative to the element itself
     */
     &::after {
@@ -60,6 +64,16 @@
 
         &::after {
             background-color: $color-background-light;
+        }
+    }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+        padding: 1.5rem 4rem;
+
+        &::after {
+            background-color: $color-primary;
         }
     }
 
