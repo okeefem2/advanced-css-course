@@ -1,0 +1,98 @@
+// Layout styles
+@import 'base';
+
+.container {
+    max-width: 120rem;
+    margin: 8rem auto;
+    background-color: var(--color-grey-light-2);
+    box-shadow: 0 2rem 6rem var(--shadow-dark);
+    min-height: 50rem;
+    @media only screen and (max-width: $desktop-break) {
+        margin: 0;
+        min-width: 100%;
+        width: 100%;
+    }
+}
+
+.header {
+    font-size: 1.4rem;
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: 1px solid var(--color-grey-light-1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: 100%;
+
+    @media only screen and (max-width: $phone-small-break) {
+        flex-wrap: wrap;
+        height: 12rem;
+        align-content: space-around;
+    }
+}
+
+.content {
+    display: flex;
+
+    @media only screen and (max-width: $tablet-vert-break) {
+        flex-direction: column;
+    }
+}
+
+.sidebar {
+    background-color: var(--color-grey-dark-1);
+    flex: 0 0 18%; // Set not to grow if more space, not to shrink if less space, and set the width to 18% of available
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hotel-view {
+    background-color: #fff;
+    flex: 1; // Take all available space
+}
+
+/*
+ * Detail
+ */
+
+.detail {
+    display: flex;
+    padding: 4.5rem;
+    background-color: var(--color-grey-light-1);
+    border-bottom: var(line);
+    font-size: 1.4rem;
+    &__description {
+        flex: 0 0 60%;
+        margin-right: 4.5rem;
+        background-color: #fff;
+        box-shadow: var(--shadow-light);
+        padding: 3rem;
+
+        @media only screen and (max-width: $tablet-vert-break) {
+            padding: 2rem;
+            margin-right: 3rem;
+        }
+
+        @media only screen and (max-width: $phone-break) {
+            margin-right: 0;
+            margin-bottom: 3rem;
+        }
+    }
+
+    &__user-reviews {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @media only screen and (max-width: $tablet-vert-break) {
+        padding: 3rem;
+    }
+
+    @media only screen and (max-width: $phone-break) {
+        flex-direction: column;
+    }
+}

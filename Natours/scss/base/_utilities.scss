@@ -1,23 +1,40 @@
+@import '../abstracts/mixins';
+
 .u-center-text {
     text-align: center !important;
 }
 
 .u-mg-btm-large {
     margin-bottom: 8rem !important;
+    @include respond(tablet-portrait) {
+        margin-bottom: 6rem !important;
+    }
 }
 
 .u-mg-btm-medium {
     margin-bottom: 4rem !important;
+    @include respond(tablet-portrait) {
+        margin-bottom: 3rem !important;
+    }
 }
 
 .u-mg-btm-small {
     margin-bottom: 1.5rem !important;
+    @include respond(tablet-portrait) {
+        margin-bottom: 1rem !important;
+    }
 }
 
 .u-mg-top-large {
     margin-top: 8rem !important;
+    @include respond(tablet-portrait) {
+        margin-top: 6rem !important;
+    }
 }
 
 .u-mg-top-x-large {
     margin-top: 10rem !important;
+    @include respond(tablet-portrait) {
+        margin-top: 8rem !important;
+    }
 }

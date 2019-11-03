@@ -3,15 +3,23 @@
 
 .row {
     max-width: $grid-width;
+    @include respond(tablet-portrait) {
+        max-width: 55rem;
+        padding: 0 3rem;
+    }
     margin: 0 auto; // Center block element inside of another bl\ock element
 
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
+
+        @include respond(tablet-portrait) {
+            margin-bottom: $gutter-vertical-small;
+        }
     }
 
     @include clearfix;
 
-    // attribute selector where class starts with col-
+    // attribute selector where class starts with col- (^ means starts with)
     // * matches where it contains that value
     // $ is where it ends with that value
     [class^='col-'] {
@@ -19,6 +27,13 @@
 
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+            @include respond(tablet-portrait) {
+                margin-right: 0;
+                margin-bottom: $gutter-vertical-small;
+            }
+        }
+        @include respond(tablet-portrait) {
+            width: 100% !important;
         }
     }
 

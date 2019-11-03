@@ -1,23 +1,48 @@
 @import '../abstracts/variables';
+@import '../abstracts/mixins';
 
 .header {
     position: relative;
     /* ^ Setting this to relative makes it so that absolute children use this as an origin/reference */
-    height: 95vh;
+    height: 85vh;
     /* ^ height should always be 95% of the viewport */
     background-image: linear-gradient(
         to right bottom,
         rgba($color-primary-light, 0.8),
         rgba($color-primary-dark, 0.8)
-    ),url('../img/hero.jpg');
+    ),url('../img/hero-small.jpg');
     /* ^ the gradient will be on top here when set first, and moves along the gradient to the right bottom */
+    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+            only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), // For safari, which doesn't - or did not support min-resolution
+            only screen and (min-width: 2000px) { // dpi Value is res of apple retina used for reference
+        // And condition to keep the large image from being used on a small device
+        // comma acts as an or for the conditions
+        background-image: linear-gradient(
+            to right bottom,
+            rgba($color-primary-light, 0.8),
+            rgba($color-primary-dark, 0.8)
+        ),url('../img/hero.jpg');
+    }
+
+    @supports (clip-path: polygon(0 0)) or
+            (-webkit-clip-path: polygon(0 0)) {
+        height: 95vh;
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); // Needed for older browsers
+        /* need the four corners of where the image should be visible */
+    }
+
     background-size: cover;
     /* ^ fit to the viewport width */
     background-position: top;
     /* ^ whatever the viewport size is, the top of the image stays up at the top, where the rest might start to scale/crop */
-    clip-path: polygon(0 0, 100% 0 , 100% 75vh, 0 100%);
-    -webkit-clip-path: polygon(0 0, 100% 0 , 100% 75vh, 0 100%); // Needed for older browsers
-    /* need the four corners of where the image should be visible */
+
+
+    // Make the slop more gentle on smaller screens
+    @include respond(phone) {
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    }
 
     &__logo-box {
         position: absolute;

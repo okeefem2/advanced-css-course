@@ -4,7 +4,30 @@
   "description": "Learning sites for scss",
   "main": "index.js",
   "scripts": {
-    "compile:natours-style": "node-sass Natours/scss/main.scss Natours/css/style.css -w"
+    "watch:natours-style": "node-sass Natours/scss/main.scss Natours/css/style.css -w",
+    "serve:natours": "live-server --open=Natours/index.html",
+    "start:natours": "npm-run-all --parallel watch:natours-style serve:natours",
+    "compile:natours-style": "node-sass Natours/scss/main.scss Natours/css/style.comp.css",
+    "concat:natours-style": "concat -o Natours/css/style.concat.css Natours/css/style.comp.css",
+    "prefix:natours-style": "postcss --use autoprefixer -b 'last 10 versions' Natours/css/style.concat.css -o Natours/css/style.prefix.css",
+    "compress:natours-style": "node-sass Natours/css/style.prefix.css Natours/css/style.css --output-style compressed",
+    "build:natours-style": "npm-run-all compile:natours-style concat:natours-style prefix:natours-style compress:natours-style",
+    "watch:trillo-style": "node-sass Trillo/scss/main.scss Trillo/css/style.css -w",
+    "serve:trillo": "live-server --open=Trillo/index.html",
+    "start:trillo": "npm-run-all --parallel watch:trillo-style serve:trillo",
+    "compile:trillo-style": "node-sass Trillo/scss/main.scss Trillo/css/style.comp.css",
+    "concat:trillo-style": "concat -o Trillo/css/style.concat.css Trillo/css/style.comp.css",
+    "prefix:trillo-style": "postcss --use autoprefixer -b 'last 10 versions' Trillo/css/style.concat.css -o Trillo/css/style.prefix.css",
+    "compress:trillo-style": "node-sass Trillo/css/style.prefix.css Trillo/css/style.css --output-style compressed",
+    "build:trillo-style": "npm-run-all compile:trillo-style concat:trillo-style prefix:trillo-style compress:trillo-style",
+    "watch:nexter-style": "node-sass Nexter/scss/main.scss Nexter/css/style.css -w",
+    "serve:nexter": "live-server --open=Nexter/index.html --browser=firefox",
+    "start:nexter": "npm-run-all --parallel watch:nexter-style serve:nexter",
+    "compile:nexter-style": "node-sass Nexter/scss/main.scss Nexter/css/style.comp.css",
+    "concat:nexter-style": "concat -o Nexter/css/style.concat.css Nexter/css/style.comp.css",
+    "prefix:nexter-style": "postcss --use autoprefixer -b 'last 10 versions' Nexter/css/style.concat.css -o Nexter/css/style.prefix.css",
+    "compress:nexter-style": "node-sass Nexter/css/style.prefix.css Nexter/css/style.css --output-style compressed",
+    "build:nexter-style": "npm-run-all compile:nexter-style concat:nexter-style prefix:nexter-style compress:nexter-style"
   },
   "repository": {
     "type": "git",
@@ -17,6 +40,14 @@
   },
   "homepage": "https://github.com/okeefem2/advanced-css-course#readme",
   "devDependencies": {
-    "node-sass": "^4.12.0"
+    "autoprefixer": "^9.6.4",
+    "concat": "^1.0.3",
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.3"
+  },
+  "dependencies": {
+    "g": "^2.0.1",
+    "live-server": "^1.2.1"
   }
 }

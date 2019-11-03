@@ -1,0 +1,77 @@
+// COLOR VARIABLES
+$color-primary: #c69963;
+$color-primary-dark: #B28451;
+
+$color-secondary: #101d2c;
+
+$color-grey-light-1: #f9f7f6;
+$color-grey-light-2: #aaa;
+
+$color-grey-dark-1: #54483A;
+$color-grey-dark-2: #6D5D4B;
+
+// FONT VARIABLES
+$font-primary: 'Nunito', sans-serif;
+$font-display: 'Josefin Sans', sans-serif;
+
+$desktop-break: 75em; // 1200px
+$tablet-horiz-break: 68.75em; // 1100px
+$tablet-vert-break: 56.25em; // 900px
+$phone-break: 37.5em; // 600px
+$phone-small-break: 31.25em; // 600px
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // so 1 rem = 10px
+
+    @media only screen and (max-width: $desktop-break) {
+        font-size: 50%;
+    }
+}
+
+body {
+    font-family: $font-primary;
+    color: $color-grey-dark-2;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.container {
+    display: grid;
+    // first is 80% viewport height, second is the min size to fit the content
+    // third is 40% of the viewport width -- scales with the width
+    // the next 3 are all also the min size to fit the content
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    // 8rem for the sidebar
+    grid-template-columns:
+                        [sidebar-start]          8rem
+                        [sidebar-end full-start] minmax(6rem, 1fr)
+                        [center-start]           repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+                        [center-end]             1fr
+                        [full-end];
+    // 8 equally sized columns either the
+    // min width of the content and 140 px
+    @media only screen and (max-width: $desktop-break) {
+        grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+        grid-template-columns: // no sidebar
+                            [full-start] minmax(6rem, 1fr)
+                            [center-start]           repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+                            [center-end]             1fr
+                            [full-end];
+    }
+
+    @media only screen and (max-width: $tablet-vert-break) {
+        grid-template-rows: 6rem calc(100vh - 6rem);
+    }
+}

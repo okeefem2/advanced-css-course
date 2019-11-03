@@ -1,9 +1,14 @@
 @import '../abstracts/variables';
+@import '../abstracts/mixins';
 
 .section-about {
     background-color: $color-grey-light-1;
     padding: 25rem 0;
     margin-top: -20vh;
+
+    @include respond(tablet-portrait) {
+        padding: 15rem 0;
+    }
 }
 
 .section-features {
@@ -21,22 +26,35 @@
     & > * { // Select all direct children
         transform: skewY(7deg);
     }
+
+    @include respond(tablet-portrait) {
+        padding: 10rem 0;
+    }
 }
 
 .section-tours {
     background-color: $color-grey-light-1;
     padding: 25rem 0 15rem 0;
     margin-top: -10rem;
+    @include respond(tablet-portrait) {
+        padding: 20rem 0 10rem 0;
+    }
 }
 
 .section-stories {
     padding: 15rem 0;
     position: relative;
+    @include respond(tablet-portrait) {
+        padding: 10rem 0;
+    }
 }
 
 .section-book {
     padding: 15rem 0;
     background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+    @include respond(tablet-portrait) {
+        padding: 10rem 0;
+    }
 }
 
 .book {
@@ -49,12 +67,46 @@
     ),
     url('../img/nat-10.jpg');
     background-size: cover;
-    height: 50rem;
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+
+    @include respond(tablet-landscape) {
+        background-image:
+        linear-gradient(
+            105deg,
+            rgba($color-white, 0.9) 0%,
+            rgba($color-white, 0.9) 70%,
+            transparent 70%,
+        ),
+        url('../img/nat-10.jpg');
+        background-size: cover;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+    }
+
+    @include respond(tablet-portrait) {
+        background-image:
+        linear-gradient(
+            to right,
+            rgba($color-white, 0.9) 0%,
+            rgba($color-white, 0.9) 100%,
+        ),
+        url('../img/nat-10.jpg');
+        background-size: cover;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+    }
 
     &__form {
         width: 50%;
         padding: 6rem;
+        @include respond(tablet-landscape) {
+            width: 70%;
+        }
+
+        @include respond(tablet-portrait) {
+            width: 100%;
+        }
+
     }
 }

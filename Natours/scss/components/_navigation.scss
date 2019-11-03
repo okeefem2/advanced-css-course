@@ -1,4 +1,5 @@
 @import '../abstracts/variables';
+@import '../abstracts/mixins';
 
 .navigation {
     &__checkbox {
@@ -10,13 +11,18 @@
         height: 7rem;
         width: 7rem;
         position: fixed;
-        top: 3rem;
-        right: 6rem;
+        top: 4rem;
+        right: 4rem;
         border-radius: 50%;
         z-index: 1002;
         box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
         text-align: center;
         cursor: pointer;
+
+        @include respond(tablet-portrait) {
+            top: 3rem;
+            right: 3rem;
+        }
     }
 
     &__background {
@@ -24,11 +30,15 @@
         width: 6rem;
         border-radius: 50%;
         position: fixed;
-        top: 3.5rem;
-        right: 6.5rem;
+        top: 4.5rem;
+        right: 4.5rem;
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 1000;
         transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+        @include respond(tablet-portrait) {
+            top: 3.5rem;
+            right: 3.5rem;
+        }
     }
 
     &__nav {
